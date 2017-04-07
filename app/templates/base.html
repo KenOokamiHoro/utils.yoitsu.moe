@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='fonts/md-icons/material-icons.css') }}" media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        {% block head %}
+        {% endblock %}
+        <title>{% block title %}{% endblock %}Horo's Utilbox </title>
+    </head>
+
+    <body>
+        {% block navbar %}
+        <ul class="side-nav fixed" id="mobile-demo">
+            <li>
+                <div class="userView" id="userView">
+                    <div class="background amber darken-3"></div>
+                    <a href="#userinfo"><img class="circle" src="{{ url_for('static', filename='icon.png') }}"></a>
+                    <a href="#"><span class="white-text name">ホロ</span></a>
+                    <a href="#">
+                        <span class="white-text email">
+                        「虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱。咱是赫萝。」
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('main.index') }}"><i class="material-icons">home</i> 首页</a></li>
+            <li><a href="{{ url_for('quote.index') }}"><i class="material-icons">question_answer</i> 话语集</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.manage') }}" class="waves-effect waves-light hide-on-large-only"><i class="material-icons">perm_identity</i>My Account</a></li>
+                <li><a href="{{ url_for('auth.logout') }}" class="waves-effect waves-light hide-on-large-only"><i class="material-icons">lock_open</i>Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}" class="waves-effect waves-light hide-on-large-only"><i class="material-icons">lock</i>Login</a></li>
+            {% endif %}
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Yoitsu.moe</a></li>
+            <li><a href="https://blog.yoitsu.moe" class="waves-effect waves-light"><i class="material-icons">chrome_reader_mode</i>Blog</a></li>
+            <li><a href="https://wiki.yoitsu.moe" class="waves-effect waves-light"><i class="material-icons">description</i>Wiki</a></li>
+            <li><a href="https://owncloud.yoitsu.moe" class="waves-effect waves-light"><i class="material-icons">search</i>Searx</a></li> 
+            <li><a href="https://img.yoitsu.moe" class="waves-effect waves-light"><i class="material-icons">picture_in_picture</i>Elimage</a></li>
+            <li><a href="https://owncloud.yoitsu.moe" class="waves-effect waves-light"><i class="material-icons">cloud</i>Nextcloud</a></li>     
+                   
+        </ul>
+        <nav>
+            <div class="nav-wrapper amber darken-3">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" class="brand-logo center">Horo's Utilbox</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.manage') }}" class="waves-effect waves-light"><i class="material-icons left">perm_identity</i>My Account</a></li>
+                <li><a href="{{ url_for('auth.logout') }}" class="waves-effect waves-light"><i class="material-icons left">lock_open</i>Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}" class="waves-effect waves-light"><i class="material-icons left">lock</i>Login</a></li>
+                {% endif %}
+            </ul>
+            </div>
+        </nav>
+        {% endblock %}
+        {% block content %}
+        <main class="container">
+            {% block page_content %}{% endblock %}
+        </main>
+        {% endblock %}
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}"></script>  
+        <script>
+            {% for message in get_flashed_messages() %}
+                Materialize.toast('{{ message }}', 4000);
+            {% endfor %}
+        </script>      
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

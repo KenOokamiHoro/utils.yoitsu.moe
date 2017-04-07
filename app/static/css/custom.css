@@ -1,0 +1,22 @@
+/* fix nav bar on the left*/
+header, main, footer, nav {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer, nav  {
+        padding-left: 0;
+    }
+}
+
+/* right content */
+main {
+    padding-top:10px;
+    }
+/* enlarge container size on desktop */
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width:85%
+    }
+}

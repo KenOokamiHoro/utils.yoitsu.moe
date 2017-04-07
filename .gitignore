@@ -87,3 +87,15 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Config files
+config.py
+
+# Visual Studio Code file
+.vscode/*
+
+# Default Uploads
+static/Uploads/*
+
+# Databases
+*.sqlite

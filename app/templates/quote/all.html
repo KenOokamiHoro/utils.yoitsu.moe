@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}All quotes - {% endblock %}
+
+{% block page_content %}
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">
+            咱记了些啥咧？
+        </span>
+        <a href="#" class="waves-effect waves-light">加一条 ~</a>
+        <a href="#" class="waves-effect waves-light">加很多条 ~</a>  
+        <table class="highlight">
+            <tbody>
+                {% for quote in quotes %}
+                <tr>
+                    <td>
+                        <a href="{{url_for('quote.view',id = quote.id)}}" class="black-text">{{ quote.content }}</a></td>
+                    <td class="avatar">
+                        <span class="title">{{ quote.author if quote.author }}</span>
+                        <p><a href="{{ quote.link or '#'}}">{{ quote.source or (quote.link[:16]+"..." if quote.link else "")}}</a></p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

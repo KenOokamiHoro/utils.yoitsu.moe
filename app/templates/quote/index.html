@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Quotes - {% endblock %}
+
+{% block page_content %}
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">
+            这次份的话是……
+        </span>
+        <blockquote class="flow-text">
+            {{ quote.content }}    
+        </blockquote>
+        <ul class="collection">
+            {% if quote.comment %}
+            <li class="collection-item">
+                <blockquote>
+                    {{ quote.comment }}
+                </blockquote>  
+                {% endif %}
+            </li>
+            {% if quote.author %}
+            <li class="collection-item flow-text">
+                <i class="material-icons">account_circle</i> {{ quote.author }}
+            </li>
+            {% endif %}
+            {% if quote.source or quote.link %}
+            <li class="collection-item">
+                <span class="flow-text"><i class="material-icons">open_in_browser</i> 
+                {{ quote.source }} 
+                </span>
+                {% if quote.link %}
+                | <a href="{{ quote.link }}">{{ quote.link }}</a>
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="card-action">
+        <a href="{{url_for('quote.index')}}">换一个？ 😋</a>
+        <a href="{{url_for('quote.jsonify',id = quote.id )}}">JSONify it 😋</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{url_for('quote.edit',id = quote.id )}}">哪里不对劲？ 😋</a>
+        <a href="{{url_for('quote.delete',id = quote.id )}}">忘了它吧 😋</a>
+        {% endif %}
+    </div>
+</div>
+    <hr />    
+    <a href="{{url_for('quote.all')}}" class="btn waves-effect waves-light">想看看咱记了啥？ 😋</a>
+    <a href="{{url_for('quote.view_random')}}" class="btn waves-effect waves-light">随便看一个？ 😋</a>
+    <a href="{{url_for('quote.jsonify_random')}}" class="btn waves-effect waves-light">随便看一个JSON？ 😋</a>
+
+{% endblock %}

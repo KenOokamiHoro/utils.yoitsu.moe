@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import "_wtf.html" as wtf %}
+{% block title %}Add quote - {% endblock %}
+
+{% block page_content %}
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">记句话？</span>
+        {{ wtf.quick_form(form) }}
+    </div>
+</div>
+{% endblock %}
