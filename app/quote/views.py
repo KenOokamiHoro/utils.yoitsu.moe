@@ -93,6 +93,7 @@ def all():
     return render_template("quote/all.html", quotes = quotes)
 
 @quote.route('/delete/<id>')
+@admin_required
 def delete(id):
     current_quote = Quote.query.filter_by(id = id).first_or_404()
     db.session.delete(current_quote)
@@ -116,5 +117,9 @@ def jsonify_random():
 
 @quote.route('/')
 def index():
-    current_quote = random.choice(Quote.query.all())
+    quotes = Quote.query.all()
+    if quotes:
+        current_quote = random.choice(Quote.query.all())
+    else:
+        current_quote = None
     return render_template("quote/index.html", quote = current_quote)

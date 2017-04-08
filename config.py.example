@@ -16,6 +16,7 @@ class Config:
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     UPLOAD_FOLDER = 'static/uploads'
     ALLOWED_EXTENSIONS = set(['json'])
+    CONNECT_TOKEN = 'some random text'
     
     @staticmethod
     def init_app(app):

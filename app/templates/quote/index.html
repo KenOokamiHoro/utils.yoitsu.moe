@@ -3,6 +3,7 @@
 {% block title %}Quotes - {% endblock %}
 
 {% block page_content %}
+{% if quote %}
 <div class="card">
     <div class="card-content">
         <span class="card-title">
@@ -45,9 +46,20 @@
         {% endif %}
     </div>
 </div>
-    <hr />    
+{% endif %}
+    <hr />
+    {% if quote %}
+    <p>    
     <a href="{{url_for('quote.all')}}" class="btn waves-effect waves-light">想看看咱记了啥？ 😋</a>
     <a href="{{url_for('quote.view_random')}}" class="btn waves-effect waves-light">随便看一个？ 😋</a>
     <a href="{{url_for('quote.jsonify_random')}}" class="btn waves-effect waves-light">随便看一个JSON？ 😋</a>
+    </p>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+    <p>
+    <a href="{{url_for('quote.add')}}" class="btn waves-effect waves-light">记些啥？ 😋</a>
+    <a href="{{url_for('quote.massadd')}}" class="btn waves-effect waves-light">多记些啥？ 😋</a>
+    </p>
+    {% endif %}
 
 {% endblock %}
