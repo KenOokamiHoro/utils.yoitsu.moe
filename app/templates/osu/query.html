@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "_wtf.html" as wtf %}
+
+
+{% block page_content %}
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">找玩 osu! 的某个人？</span>
+        <blockquote>
+            <p>其实这个没啥用 (つ°ω°)つ</p>
+            <p><a href="https://new.ppy.sh">去官方找大概速度会快点  ╮(￣▽￣)╭</a></p>
+        </blockquote>
+        {{ wtf.quick_form(form) }}
+    </div>
+</div>
+{% endblock %}

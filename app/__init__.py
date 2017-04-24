@@ -45,4 +45,7 @@ def create_app(config_name):
     from .quote import quote as quote_blueprint
     app.register_blueprint(quote_blueprint, url_prefix='/quote')
 
+    from .tools import tools as tools_blueprint
+    app.register_blueprint(tools_blueprint, url_prefix='/tools')
+
     return app
