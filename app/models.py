@@ -165,6 +165,7 @@ class Quote(db.Model):
 class ChatLogMessage(db.Model):
     __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.DateTime)
     channel = db.Column(db.String(64), index=True)
     nick = db.Column(db.String(64), index=True)
     messages = db.Column(db.Text())
