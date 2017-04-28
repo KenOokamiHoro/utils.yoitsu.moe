@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Logs - {% endblock %}
+
+{% block page_content %}
+
+<div class="row">
+    {% for channel in channels %}
+    <div class="col s12 m6 l6">
+        <div class="card">
+            <div class="card-content">
+            <span class="card-title">{{channel}}</span>
+            {% for day in channels[channel] %}
+            <a href="{{url_for('irclog.view_day', channel = channel[1:] if "#" in channel else channel, day = day )}}">{{day}}</a>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

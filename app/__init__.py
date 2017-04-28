@@ -48,4 +48,7 @@ def create_app(config_name):
     from .tools import tools as tools_blueprint
     app.register_blueprint(tools_blueprint, url_prefix='/tools')
 
+    from .irclog import irclog as irclog_blueprint
+    app.register_blueprint(irclog_blueprint, url_prefix='/irclog')
+
     return app

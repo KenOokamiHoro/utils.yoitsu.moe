@@ -1,0 +1,18 @@
+{% extends "silm.html" %}
+
+{% block title %}Logs in {{channel}} - {% endblock %}
+{% block page_title %}Logs in {{channel}} {{"| "+ day if day }} {% endblock %}
+
+{% block page_content %}
+    <br />
+    <table>
+        {% for line in logs %}
+        {# 0=time 1=nick 2=message #}
+        <tr class="row">
+            <td class="col s6 m3 l{{2 if full_timestamp else 1}}">{{line[0]}}</td>
+            <td class="col s6 m3 l2 right-align">{{line[1]}}</td>
+            <td class="col s12 m6 l{{8 if full_timestamp else 9}} left-align">{{line[2]}}</td>
+        </tr>    
+        {% endfor %}
+    </table>
+{% endblock %}

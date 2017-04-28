@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/silm.css') }}" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='fonts/md-icons/material-icons.css') }}" media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        {% block head %}
+        {% endblock %}
+        <title>{% block title %}{% endblock %}Horo's Utilbox </title>
+    </head>
+
+    <body>
+        {% block navbar %}
+        <nav>
+            <div class="nav-wrapper amber darken-3">
+            <a href="#" class="brand-logo center">{% block page_title %}{% endblock %}</a>
+            <ul id="nav-mobile" class="left">
+                <li><a href="{{ url_for('irclog.index') }}" class="waves-effect waves-light"><i class="material-icons">keyboard_arrow_left</i></a></li>
+            </ul>
+            </div>
+        </nav>
+        {% endblock %}
+        {% block content %}
+        <main class="container">
+            {% block page_content %}{% endblock %}
+        </main>
+        {% endblock %}
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}"></script>  
+        <script>
+            {% for message in get_flashed_messages() %}
+                Materialize.toast('{{ message }}', 4000);
+            {% endfor %}
+        </script>      
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

@@ -169,3 +169,6 @@ class ChatLogMessage(db.Model):
     channel = db.Column(db.String(64), index=True)
     nick = db.Column(db.String(64), index=True)
     messages = db.Column(db.Text())
+
+    def __str__(self):
+        return "{} <{}>[{}] {}".format(self.time,self.channel,self.nick,self.messages)
