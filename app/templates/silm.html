@@ -18,7 +18,7 @@
         {% block navbar %}
         <nav>
             <div class="nav-wrapper amber darken-3">
-            <a href="#" class="brand-logo center">{% block page_title %}{% endblock %}</a>
+            <a href="#" class="brand-logo center hide-on-small-only">{% block page_title %}{% endblock %}</a>
             <ul id="nav-mobile" class="left">
                 <li><a href="{{ url_for('irclog.index') }}" class="waves-effect waves-light"><i class="material-icons">keyboard_arrow_left</i></a></li>
             </ul>

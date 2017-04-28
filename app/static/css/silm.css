@@ -5,3 +5,10 @@
         width:85%
     }
 }
+
+@media only screen and (max-width: 993px) {
+    body {
+        word-wrap: break-word;
+    }
+}
+

@@ -5,7 +5,8 @@
 
 {% block page_content %}
     <br />
-    <table>
+    <h4 class="hide-on-med-and-up">Logs in {{channel}} {{"| "+ day if day }}</h4>
+    <table class="container">
         {% for line in logs %}
         {# 0=time 1=nick 2=message #}
         <tr class="row">

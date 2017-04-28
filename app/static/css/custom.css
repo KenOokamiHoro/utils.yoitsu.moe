@@ -12,6 +12,7 @@ header, main, footer, nav {
 /* right content */
 main {
     padding-top:10px;
+    word-wrap: break-word;
     }
 /* enlarge container size on desktop */
 

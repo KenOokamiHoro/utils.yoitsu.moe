@@ -11,7 +11,13 @@
             <div class="card-content">
             <span class="card-title">{{channel}}</span>
             {% for day in channels[channel] %}
-            <a href="{{url_for('irclog.view_day', channel = channel[1:] if "#" in channel else channel, day = day )}}">{{day}}</a>
+            {% if "##" in channel %}
+            <a href="{{url_for('irclog.view_day', channel = channel.replace('##','$'), day = day )}}">{{day}}</a>
+            {% elif "#" in channel %}
+            <a href="{{url_for('irclog.view_day', channel = channel.replace('#','$'), day = day )}}">{{day}}</a>
+            {% else %}
+            <a href="{{url_for('irclog.view_day', channel = channel.replace('##','$'), day = day )}}">{{day}}</a>            
+            {% endif %}
             {% endfor %}
             </div>
         </div>

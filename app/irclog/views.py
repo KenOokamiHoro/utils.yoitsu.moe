@@ -16,8 +16,11 @@ def index():
 
 @irclog.route('/<channel>',methods=["GET","POST"])
 def view(channel):
+    channel=channel.replace("$","#")
     try:
         log_files=[ open(i) for i in glob.glob("/home/horo/.weechat/logs/freenode*/#{}.weechatlog".format(channel))]
+        if not log_files:
+            raise FileNotFoundError
     except FileNotFoundError:
         abort(404)
     else:
@@ -28,6 +31,7 @@ def view(channel):
 
 @irclog.route('/<channel>/<day>',methods=["GET","POST"])
 def view_day(channel,day):
+    channel=channel.replace("$","#")
     try:
         if day.lower() == "today":
             log_file = open("/home/horo/.weechat/logs/freenode/#{}.weechatlog".format(channel))
