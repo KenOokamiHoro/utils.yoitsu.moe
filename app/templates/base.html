@@ -31,6 +31,7 @@
             </li>
             <li><a href="{{ url_for('main.index') }}"><i class="material-icons">home</i> 首页</a></li>
             <li><a href="{{ url_for('quote.index') }}"><i class="material-icons">question_answer</i> 话语集</a></li>
+            <li><a href="{{ url_for('irclog.index') }}"><i class="material-icons">description</i> IRC logs </a></li>            
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('auth.manage') }}" class="waves-effect waves-light hide-on-large-only"><i class="material-icons">perm_identity</i>My Account</a></li>
                 <li><a href="{{ url_for('auth.logout') }}" class="waves-effect waves-light hide-on-large-only"><i class="material-icons">lock_open</i>Logout</a></li>
